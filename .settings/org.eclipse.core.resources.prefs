@@ -1,9 +1,0 @@
-eclipse.preferences.version=1
-encoding//account_advance_payment/__init__.py=utf-8
-encoding//account_advance_payment/__openerp__.py=utf-8
-encoding//account_advance_payment/model/__init__.py=utf-8
-encoding//account_advance_payment/model/account.py=utf-8
-encoding//account_advance_payment/model/account_voucher.py=utf-8
-encoding//account_advance_payment/model/res_partner.py=utf-8
-encoding//sicepat_erp/__init__.py=utf-8
-encoding//sicepat_erp/__openerp__.py=utf-8
