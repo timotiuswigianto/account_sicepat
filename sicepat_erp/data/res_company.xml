@@ -3,7 +3,7 @@
     <data noupdate="1">
                 
         <!-- Add ID Languange -->
-        <record id="lang_id" model="res.lang">
+        <record forcecreate="True" id="lang_id" model="res.lang">
             <field name="code">id_ID</field>
             <field name="name">Indonesia</field>
             <field name="grouping">[3,0]</field>
