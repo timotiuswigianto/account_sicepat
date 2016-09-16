@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_invoice_line_form_sicepat_dest_code" model="ir.ui.view">
+            <field name="name">account.invoice.line.form.sicepat.dest_code</field>
+            <field name="model">account.invoice.line</field>
+            <field name="inherit_id" ref="account.view_invoice_line_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/group[2]" position="after">
+                	<group name="delivery_info">
+	                	<field name="destination_code"/>
+                	</group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
