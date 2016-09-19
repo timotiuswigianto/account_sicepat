@@ -143,7 +143,7 @@
             <field name="name">Other Current Liability</field>
             <field name="code">other-current-liability</field>
             <field name="report_type">liability</field>
-            <field name="close_method">balance</field>
+            <field name="close_method">unreconciled</field>
         </record>
         <record id="user_type_long_term_liability" model="account.account.type">
             <field name="name">Long term Liability</field>

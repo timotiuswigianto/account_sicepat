@@ -124,7 +124,7 @@ chart_112001000,112.001.000,TRUE,receivable,chart_112000000,l10n_id_sicepat.user
 chart_112002000,112.002.000,TRUE,receivable,chart_112000000,l10n_id_sicepat.user_type_account_receivable,Piutang Karyawan,l10n_id_sicepat.chart_sicepat
 chart_112003000,112.003.000,FALSE,other,chart_112000000,l10n_id_sicepat.user_type_account_receivable,Piutang Pemegang Saham,l10n_id_sicepat.chart_sicepat
 chart_112004000,112.004.000,FALSE,other,chart_112000000,l10n_id_sicepat.user_type_account_receivable,Piutang Pihak Berelasi,l10n_id_sicepat.chart_sicepat
-chart_112005000,112.005.000,FALSE,other,chart_112000000,l10n_id_sicepat.user_type_account_receivable,Piutang Lain-lain,l10n_id_sicepat.chart_sicepat
+chart_112005000,112.005.000,TRUE,receivable,chart_112000000,l10n_id_sicepat.user_type_account_receivable,Piutang Lain-lain,l10n_id_sicepat.chart_sicepat
 chart_113000000,113.000.000,FALSE,view,chart_110000000,l10n_id_sicepat.user_type_account_receivable,Uang Muka,l10n_id_sicepat.chart_sicepat
 chart_113001000,113.001.000,FALSE,other,chart_113000000,l10n_id_sicepat.user_type_account_receivable,Uang Muka Pembelian Barang/Jasa,l10n_id_sicepat.chart_sicepat
 chart_113002000,113.002.000,FALSE,other,chart_113000000,l10n_id_sicepat.user_type_account_receivable,Uang Muka Operasional Karyawan,l10n_id_sicepat.chart_sicepat
@@ -159,7 +159,7 @@ chart_200001002,200.001.002,FALSE,other,chart_200001000,l10n_id_sicepat.user_typ
 chart_200002000,200.002.000,FALSE,view,chart_200000000,l10n_id_sicepat.user_type_account_payable,Hutang Jangka Panjang,l10n_id_sicepat.chart_sicepat
 chart_200002001,200.002.001,FALSE,other,chart_200002000,l10n_id_sicepat.user_type_account_payable,Hutang Leasing Jangka Panjang,l10n_id_sicepat.chart_sicepat
 chart_200003000,200.003.000,FALSE,view,chart_200000000,l10n_id_sicepat.user_type_other_current_liability,Hutang Lain-Lain,l10n_id_sicepat.chart_sicepat
-chart_200003001,200.003.001,FALSE,other,chart_200003000,l10n_id_sicepat.user_type_other_current_liability,Pendapatan Jasa Diterima Dimuka,l10n_id_sicepat.chart_sicepat
+chart_200003001,200.003.001,TRUE,payable,chart_200003000,l10n_id_sicepat.user_type_other_current_liability,Pendapatan Jasa Diterima Dimuka,l10n_id_sicepat.chart_sicepat
 chart_200003002,200.003.002,FALSE,other,chart_200003000,l10n_id_sicepat.user_type_other_current_liability,Hutang Pihak Berelasi,l10n_id_sicepat.chart_sicepat
 chart_200004000,200.004.000,FALSE,view,chart_200000000,l10n_id_sicepat.user_type_other_current_liability,Hutang Pajak,l10n_id_sicepat.chart_sicepat
 chart_200004001,200.004.001,FALSE,other,chart_200004000,l10n_id_sicepat.user_type_other_current_liability,PPh Pasal 4(2) YMH Dibayar,l10n_id_sicepat.chart_sicepat

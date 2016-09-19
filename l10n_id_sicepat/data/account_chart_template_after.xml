@@ -8,7 +8,7 @@
 			<field name="property_account_receivable" ref="chart_112001000"/>
 			<field name="property_account_payable" ref="chart_200001001"/>
 			<field name="property_account_advance_receivable" ref="chart_200003001"/>
-			<!-- <field name="property_account_advance_payable" ref="chart_200001001"/> -->
+			<field name="property_account_advance_payable" ref="chart_112005000"/>
             <field name="currency_id" ref="base.IDR"/>
 			<field name="bank_account_view_id" ref="chart_111000000"/>
 			<!-- <field name="property_account_expense_categ" ref="chart_800003000"/> -->
