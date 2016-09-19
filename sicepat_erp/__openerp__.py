@@ -56,7 +56,7 @@ Feature
         'invoice_line_comment',
         'account_invoice_revision',
         'invoice_send_mail',
-        'invoice_filter_today',
+        'invoice_filter_date',
         'account_advance_payment',
         'email_template_dateutil',
         'mail_delete_sent_by_footer',
