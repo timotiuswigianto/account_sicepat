@@ -44,7 +44,7 @@ class account_invoice(models.Model):
         self.delete_workflow()
         self.create_workflow()
         self.write({'state': 'draft'})
-        msg = _('New revision created: %s') % self.name
+        msg = _('New revision created: %s') % self.number
         self.message_post(body=msg)
         old_revision.message_post(body=msg)
         return {
