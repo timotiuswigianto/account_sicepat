@@ -21,7 +21,8 @@
 	                            <field name="filter" on_change="onchange_filter(filter, )"/>
 	                        </group>
 	                        <group string="Dates" attrs="{'invisible':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}">
-	                            <field name="date_as_of" />
+	                            <field name="date_as_of"/>
+	                            <field name="show_only_date" class="oe_inline"/>
 	                        </group>
 	                    </page>
 	                    <page string="Partners" name="partner_ids">

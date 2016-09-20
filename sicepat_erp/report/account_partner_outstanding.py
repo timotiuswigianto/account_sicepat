@@ -56,6 +56,7 @@ class partner_outstanding(report_sxw.rml_parse, common_report_header):
         self.target_move = data['form'].get('target_move', 'all')
         self.partner_ids = data['form'].get('partner_ids')
         self.date_as_of = data['form'].get('date_as_of', "(now() at time zone 'UTC')")
+        self.show_only_date = data['form'].get('show_only_date')
 
         if (self.result_selection == 'customer'):
             self.ACCOUNT_TYPE = ('receivable',)
@@ -69,6 +70,11 @@ class partner_outstanding(report_sxw.rml_parse, common_report_header):
         else:
             self.as_of_date = "'%s'" % self.date_as_of
             
+        if self.show_only_date:
+            self.date_operator = "="
+        else:
+            self.date_operator = "<="
+        
         if self.partner_ids:
             self.where_partner = """inv.partner_id IN """ + str(tuple(self.partner_ids)) + """ AND"""
         else:
@@ -128,7 +134,7 @@ class partner_outstanding(report_sxw.rml_parse, common_report_header):
                 """ + self.where_partner + """
                 account.type IN %s AND
                 move_line.state IN %s AND
-                inv.date_invoice <= """ + self.as_of_date + """
+                inv.date_invoice """ + self.date_operator + """ """ + self.as_of_date + """
             ORDER BY partner.name, inv.number""", (
                 tuple(move_state),
                 tuple(move_state),

@@ -166,10 +166,11 @@ class account_invoice(models.Model):
         if not self.date_invoice:
             date_invoice = fields.Date.context_today(self)
         query = """ SELECT move_line.id
-                    FROM account_move_line move_line, account_invoice inv
+                    FROM account_move_line move_line, account_invoice inv, account_account acc
                     WHERE
                         move_line.partner_id=inv.partner_id AND 
-                        move_line.account_id=inv.account_id AND
+                        move_line.account_id=acc.id AND 
+                        acc.type='receivable' AND
                         move_line.credit>0 AND
                         move_line.reconcile_ref is null AND
                         move_line.date<=%s AND

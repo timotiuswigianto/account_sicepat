@@ -34,6 +34,7 @@ class account_partner_balance(osv.osv_memory):
     _columns = {
         'filter': fields.selection([('filter_no', 'No Filters'), ('filter_date', 'Date')], "Filter by", required=True),
         'date_as_of': fields.date("As of Date"),
+        'show_only_date': fields.boolean("Show only this date?"),
         'display_partner': fields.selection([('non-zero_balance', 'With balance is not equal to 0'), ('all', 'All Partners')]
                                     ,'Display Partners'),
         'partner_ids': fields.many2many('res.partner', string='Partners'),
@@ -55,7 +56,7 @@ class account_partner_balance(osv.osv_memory):
         if context is None:
             context = {}
         data = self.pre_print_report(cr, uid, ids, data, context=context)
-        data['form'].update(self.read(cr, uid, ids, ['date_as_of', 'display_partner', 'partner_ids'])[0])
+        data['form'].update(self.read(cr, uid, ids, ['date_as_of', 'show_only_date', 'display_partner', 'partner_ids'])[0])
         return self.pool['report'].get_action(cr, uid, [], 'account.report_partneroutstanding', data=data, context=context)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
