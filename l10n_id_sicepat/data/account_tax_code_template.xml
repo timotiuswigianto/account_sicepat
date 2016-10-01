@@ -39,11 +39,19 @@
 						<field name="name">Dasar Penjualan Kena Pajak (PPn)</field>
 						<field name="parent_id" eval="tc_base_sale"/>
 					</record>
+						<record id="tc_base_sale_vat_out2" model="account.tax.code.template">
+							<field name="name">Base PPn Keluaran 1% (include)</field>
+							<field name="parent_id" ref="tc_base_sale_vat"/>
+						</record>
 						<record id="tc_base_sale_vat_out1" model="account.tax.code.template">
+							<field name="name">Base PPn Keluaran 1%</field>
+							<field name="parent_id" ref="tc_base_sale_vat"/>
+						</record>
+						<record id="tc_base_sale_vat_out3" model="account.tax.code.template">
 							<field name="name">Base PPn Keluaran 10%</field>
 							<field name="parent_id" ref="tc_base_sale_vat"/>
 						</record>
-						<record id="tc_base_sale_vat_out2" model="account.tax.code.template">
+						<record id="tc_base_sale_vat_out4" model="account.tax.code.template">
 							<field name="name">Base PPn Keluaran 10% (include)</field>
 							<field name="parent_id" ref="tc_base_sale_vat"/>
 						</record>
@@ -93,11 +101,19 @@
 						<field name="name">Pajak Penjualan (PPn)</field>
 						<field name="parent_id" eval="tc_bal_reci"/>
 					</record>
+						<record id="tc_bal_reci_vat_out2" model="account.tax.code.template">
+							<field name="name">PPn Keluaran 1% (include)</field>
+							<field name="parent_id" ref="tc_bal_reci_vat"/>
+						</record>
 						<record id="tc_bal_reci_vat_out1" model="account.tax.code.template">
+							<field name="name">PPn Keluaran 1%</field>
+							<field name="parent_id" ref="tc_bal_reci_vat"/>
+						</record>
+						<record id="tc_bal_reci_vat_out3" model="account.tax.code.template">
 							<field name="name">PPn Keluaran 10%</field>
 							<field name="parent_id" ref="tc_bal_reci_vat"/>
 						</record>
-						<record id="tc_bal_reci_vat_out2" model="account.tax.code.template">
+						<record id="tc_bal_reci_vat_out4" model="account.tax.code.template">
 							<field name="name">PPn Keluaran 10% (include)</field>
 							<field name="parent_id" ref="tc_bal_reci_vat"/>
 						</record>

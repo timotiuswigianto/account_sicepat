@@ -105,7 +105,7 @@
             <field name="name">Other Current Asset</field>
             <field name="code">other-current-asset</field>
             <field name="report_type">asset</field>
-            <field name="close_method">balance</field>
+            <field name="close_method">unreconciled</field>
         </record>
         <record id="user_type_fixed_asset" model="account.account.type">
             <field name="name">Fixed Asset</field>
