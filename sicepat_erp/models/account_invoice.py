@@ -194,16 +194,6 @@ class account_invoice(models.Model):
             overpaid -= overpaid_amount
         return min(overpaid, 0.0)
 
-    def process_after_action(self, cr, uid, ids, context=None):
-        for invoice in self.browse(cr, uid, ids):
-#             invoice.button_compute()
-#             if invoice.state not in ('draft', 'proforma', 'proforma2'):
-#                 continue
-#             invoice.signal_workflow('invoice_open')
-#             invoice.action_send_invoice_mail()
-            invoice.invalidate_cache()
-        return True
-
     def remove_after_process(self, cr, uid, cron_ids=None):
         if not cron_ids:
             cr.execute("""SELECT id FROM ir_cron

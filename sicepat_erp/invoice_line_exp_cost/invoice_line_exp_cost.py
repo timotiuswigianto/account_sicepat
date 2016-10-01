@@ -32,13 +32,15 @@ class account_invoice_line(models.Model):
     def _compute_price(self):
         price = self.price_unit * (1 - (self.discount or 0.0) / 100.0)
         taxes = self.invoice_line_tax_id.compute_all(price, self.quantity, product=self.product_id, partner=self.invoice_id.partner_id)
+        tax_extra_ship_cost = self.invoice_line_tax_id.compute_all(self.extra_shipping_cost, 1, product=self.product_id, partner=self.invoice_id.partner_id)
         tax_insurance_fee = self.invoice_line_tax_id.compute_all(self.insurance_fee, 1, product=self.product_id, partner=self.invoice_id.partner_id)
         tax_admcost_insurance = self.invoice_line_tax_id.compute_all(self.admcost_insurance, 1, product=self.product_id, partner=self.invoice_id.partner_id)
         tax_packing_cost = self.invoice_line_tax_id.compute_all(self.packing_cost, 1, product=self.product_id, partner=self.invoice_id.partner_id)  
-        self.price_subtotal = taxes['total'] + tax_insurance_fee['total'] + tax_admcost_insurance['total'] + tax_packing_cost['total']
+        self.price_subtotal = taxes['total'] + tax_extra_ship_cost['total'] + tax_insurance_fee['total'] + tax_admcost_insurance['total'] + tax_packing_cost['total']
         if self.invoice_id:
             self.price_subtotal = self.invoice_id.currency_id.round(self.price_subtotal)
 
+    extra_shipping_cost = fields.Float(string='Extra Shipping Cost', digits= dp.get_precision('Product Price'), default=0.0)
     insurance_value = fields.Float(string='Insurance Value', digits= dp.get_precision('Product Price'), default=0.0)
     insurance_fee = fields.Float(string='Insurance Fee', digits= dp.get_precision('Product Price'), default=0.0)
     admcost_insurance = fields.Float(string='Cost Administration of Insurance', digits= dp.get_precision('Product Price'), default=0.0)
@@ -56,6 +58,8 @@ class account_invoice_tax(models.Model):
             taxes = line.invoice_line_tax_id.compute_all(
                 (line.price_unit * (1 - (line.discount or 0.0) / 100.0)),
                 line.quantity, line.product_id, invoice.partner_id)['taxes']
+            taxes += line.invoice_line_tax_id.compute_all(
+                line.extra_shipping_cost, 1, line.product_id, invoice.partner_id)['taxes']
             taxes += line.invoice_line_tax_id.compute_all(
                 line.insurance_fee, 1, line.product_id, invoice.partner_id)['taxes']
             taxes += line.invoice_line_tax_id.compute_all(

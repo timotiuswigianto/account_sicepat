@@ -91,9 +91,9 @@
 
 		<function model="ir.values" name="set_default" eval="('product.template','sale_delay',1)"/>
 		
-        <function model="ir.values" name="set_default" eval="('account.invoice', 'partner_bank_id', ref('l10n_id_sicepat.bank_2703027211'), True, ref('base.main_company'), 'type=out_invoice')"/>
+        <function model="ir.values" name="set_default" eval="('account.invoice', 'partner_bank_id', ref('l10n_id_sicepat.bank_2700618989'), True, ref('base.main_company'), 'type=out_invoice')"/>
 
-        <function model="ir.values" name="set_default" eval="('account.invoice', 'partner_bank2_id', ref('l10n_id_sicepat.bank_2700618989'), True, ref('base.main_company'), 'type=out_invoice')"/>
+        <function model="ir.values" name="set_default" eval="('account.invoice', 'partner_bank2_id', ref('l10n_id_sicepat.bank_1210006557171'), True, ref('base.main_company'), 'type=out_invoice')"/>
         
 	</data>
 </openerp>

@@ -52,8 +52,12 @@
         <menuitem icon="STOCK_PRINT"
             name="Outstanding Invoices"
             action="action_account_partner_outstanding"
+        	groups="account.group_account_invoice,account.group_account_user,account.group_account_manager"
             id="menu_account_partner_outstanding_report"
             parent="account.next_id_22"/>
+        <record model="ir.ui.menu" id="account.menu_finance_reports">
+        	<field name="groups_id" eval="[(6,0,[ref('account.group_account_invoice'),ref('account.group_account_user'),ref('account.group_account_manager')])]"/>
+        </record>
 
      </data>
  </openerp>

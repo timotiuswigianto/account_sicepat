@@ -57,7 +57,7 @@ Feature
         'account_invoice_revision',
         'invoice_send_mail',
         'invoice_filter_date',
-        'account_advance_payment',
+        'account_advance',
         'email_template_dateutil',
         'mail_delete_sent_by_footer',
         'disable_invoice_editable_list',
@@ -90,6 +90,7 @@ Feature
         'invoice_line_exp_cost/invoice_line_exp_cost_view.xml',
         'views/ir_sequence_view.xml',
         'views/account_invoice_view.xml',
+        'views/voucher_payment_receipt_view.xml',
         'views/res_config_view.xml',
         'views/layouts.xml',
 #         'views/report_invoice_old.xml',
@@ -97,6 +98,7 @@ Feature
         'views/report_partner_outstanding.xml',
         'edi/invoice_action_data.xml',
         'views/sicepat_template.xml',
+        'security/ir.model.access.csv',
     ],
 
     # only loaded in demonstration mode
