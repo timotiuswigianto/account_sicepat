@@ -483,22 +483,23 @@ class ir_import(orm.TransientModel):
                 cr.execute('ROLLBACK TO SAVEPOINT import')
             else:
                 if record.res_model == 'account.invoice' and (context.get('type', False) and context['type'] == 'out_invoice'):
-                    _logger.info('processing into cron...')
-                    for res_id in import_result['ids']:
-                        cron_vals = {
-                            'name': 'process_after_action',
-                            'user_id': uid,
-                            'interval_number': 5,
-                            'interval_type': 'minutes',
-                            'numbercall': 1,
-                            'nextcall': datetime.datetime.utcnow().strftime(DEFAULT_SERVER_DATETIME_FORMAT),
-                            'model': record.res_model,
-                            'function': 'process_after_action',
-                            'args': repr([[res_id]]),
-                            'priority': 5,
-                        }
-                        self.pool['ir.cron'].create(cr, SUPERUSER_ID, cron_vals)
-                    _logger.info('done processing into cron')
+                    if import_result['ids']:
+                        _logger.info('processing into cron...')
+                        for res_id in import_result['ids']:
+                            cron_vals = {
+                                'name': 'process_after_action',
+                                'user_id': uid,
+                                'interval_number': 5,
+                                'interval_type': 'minutes',
+                                'numbercall': 1,
+                                'nextcall': datetime.datetime.utcnow().strftime(DEFAULT_SERVER_DATETIME_FORMAT),
+                                'model': record.res_model,
+                                'function': 'process_after_action',
+                                'args': repr([[res_id]]),
+                                'priority': 5,
+                            }
+                            self.pool['ir.cron'].create(cr, SUPERUSER_ID, cron_vals)
+                        _logger.info('done processing into cron')
                 cr.execute('RELEASE SAVEPOINT import')
         except psycopg2.InternalError:
             pass
