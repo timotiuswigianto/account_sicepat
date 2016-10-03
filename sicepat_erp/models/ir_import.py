@@ -488,10 +488,11 @@ class ir_import(orm.TransientModel):
                         for res_id in import_result['ids']:
                             cron_vals = {
                                 'name': 'process_after_action',
-                                'user_id': uid,
+                                'user_id': SUPERUSER_ID,
                                 'interval_number': 5,
                                 'interval_type': 'minutes',
                                 'numbercall': 1,
+                                'doall': True,
                                 'nextcall': datetime.datetime.utcnow().strftime(DEFAULT_SERVER_DATETIME_FORMAT),
                                 'model': record.res_model,
                                 'function': 'process_after_action',
