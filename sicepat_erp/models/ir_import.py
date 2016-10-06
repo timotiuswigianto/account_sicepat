@@ -317,10 +317,10 @@ class AccountInvoice(models.Model):
     
     def process_after_action(self, cr, uid, ids, context=None):
         for invoice in self.browse(cr, uid, ids):
-            invoice.button_compute()
-            _logger.info('computing (%s, %d)' % (self._name, invoice.id))
             if invoice.state not in ('draft', 'proforma', 'proforma2'):
                 continue
+            invoice.button_compute()
+            _logger.info('computing (%s, %d)' % (self._name, invoice.id))
             invoice.signal_workflow('invoice_open')
             _logger.info('validating (%s, %d) with number %s' % (self._name, invoice.id, invoice.number))
 #             invoice.action_send_invoice_mail()
@@ -389,11 +389,12 @@ class AccountInvoice(models.Model):
         inv_id = (cr.fetchone() or [False])[0]
         
         if inv_id:
-            cr.execute("SELECT state FROM account_invoice WHERE id="+str(inv_id))
-            inv_state = (cr.fetchone() or [False])[0]
-            
-            if inv_state and inv_state != 'draft':
-                return
+            return
+#             cr.execute("SELECT state FROM account_invoice WHERE id="+str(inv_id))
+#             inv_state = (cr.fetchone() or [False])[0]
+#             
+#             if inv_state and inv_state not in ('draft', 'proforma', 'proforma2'):
+#                 return
         else:
             statement = """INSERT INTO "%s" (%s) VALUES(%s) RETURNING id""" % (
                 "account_invoice",
@@ -485,7 +486,10 @@ class ir_import(orm.TransientModel):
                 if record.res_model == 'account.invoice' and (context.get('type', False) and context['type'] == 'out_invoice'):
                     if import_result['ids']:
                         _logger.info('processing into cron...')
+                        index = 0
                         for res_id in import_result['ids']:
+                            if not res_id:
+                                continue
                             cron_vals = {
                                 'name': 'process_after_action',
                                 'user_id': SUPERUSER_ID,
@@ -493,13 +497,14 @@ class ir_import(orm.TransientModel):
                                 'interval_type': 'minutes',
                                 'numbercall': 1,
                                 'doall': True,
-                                'nextcall': datetime.datetime.utcnow().strftime(DEFAULT_SERVER_DATETIME_FORMAT),
+                                'nextcall': (datetime.datetime.utcnow() + datetime.timedelta(seconds=index)).strftime(DEFAULT_SERVER_DATETIME_FORMAT),
                                 'model': record.res_model,
                                 'function': 'process_after_action',
                                 'args': repr([[res_id]]),
                                 'priority': 5,
                             }
                             self.pool['ir.cron'].create(cr, SUPERUSER_ID, cron_vals)
+                            index +=2
                         _logger.info('done processing into cron')
                 cr.execute('RELEASE SAVEPOINT import')
         except psycopg2.InternalError:
