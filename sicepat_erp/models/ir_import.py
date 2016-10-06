@@ -487,16 +487,14 @@ class ir_import(orm.TransientModel):
                     if import_result['ids']:
                         _logger.info('processing into cron...')
                         for res_id in import_result['ids']:
-                            if not res_id:
-                                continue
                             cron_vals = {
                                 'name': 'process_after_action',
                                 'user_id': SUPERUSER_ID,
-                                'interval_number': 5,
+                                'interval_number': 1,
                                 'interval_type': 'minutes',
                                 'numbercall': 1,
                                 'doall': True,
-                                'nextcall': (datetime.datetime.utcnow() + datetime.timedelta(seconds=.05)).strftime(DEFAULT_SERVER_DATETIME_FORMAT),
+                                'nextcall': datetime.datetime.utcnow().strftime(DEFAULT_SERVER_DATETIME_FORMAT),
                                 'model': record.res_model,
                                 'function': 'process_after_action',
                                 'args': repr([[res_id]]),
