@@ -390,11 +390,7 @@ class AccountInvoice(models.Model):
         
         if inv_id:
             return
-#             cr.execute("SELECT state FROM account_invoice WHERE id="+str(inv_id))
-#             inv_state = (cr.fetchone() or [False])[0]
-#             
-#             if inv_state and inv_state not in ('draft', 'proforma', 'proforma2'):
-#                 return
+
         else:
             statement = """INSERT INTO "%s" (%s) VALUES(%s) RETURNING id""" % (
                 "account_invoice",
