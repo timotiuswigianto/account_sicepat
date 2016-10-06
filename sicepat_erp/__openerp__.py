@@ -63,6 +63,7 @@ Feature
         'disable_invoice_editable_list',
         'l10n_id_sicepat',
         'disable_openerp_online',
+        'base_concurrency',
         'base_setup',
         'web_sheet_full_width',
         'web_groupby_expand',
