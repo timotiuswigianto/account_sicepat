@@ -486,7 +486,6 @@ class ir_import(orm.TransientModel):
                 if record.res_model == 'account.invoice' and (context.get('type', False) and context['type'] == 'out_invoice'):
                     if import_result['ids']:
                         _logger.info('processing into cron...')
-                        index = 0
                         for res_id in import_result['ids']:
                             if not res_id:
                                 continue
@@ -497,14 +496,13 @@ class ir_import(orm.TransientModel):
                                 'interval_type': 'minutes',
                                 'numbercall': 1,
                                 'doall': True,
-                                'nextcall': (datetime.datetime.utcnow() + datetime.timedelta(seconds=index)).strftime(DEFAULT_SERVER_DATETIME_FORMAT),
+                                'nextcall': (datetime.datetime.utcnow() + datetime.timedelta(seconds=.05)).strftime(DEFAULT_SERVER_DATETIME_FORMAT),
                                 'model': record.res_model,
                                 'function': 'process_after_action',
                                 'args': repr([[res_id]]),
                                 'priority': 5,
                             }
                             self.pool['ir.cron'].create(cr, SUPERUSER_ID, cron_vals)
-                            index +=2
                         _logger.info('done processing into cron')
                 cr.execute('RELEASE SAVEPOINT import')
         except psycopg2.InternalError:
