@@ -200,7 +200,7 @@ class account_invoice(models.Model):
                           WHERE numbercall = 0
                               AND not active AND nextcall <= (now() at time zone 'UTC')
                               AND model = 'account.invoice' AND name = 'process_after_action'""")
-            cron_ids = cr.fetchall()
+            cron_ids = [cron_id[0] for cron_id in cr.fetchall()]
             if not cron_ids:
                 _logger.info('no cron\'s inactive')
                 return
