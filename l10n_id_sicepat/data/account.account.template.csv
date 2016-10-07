@@ -93,7 +93,7 @@ chart_116002000,116.002.000,FALSE,view,chart_116000000,l10n_id_sicepat.user_type
 chart_116002001,116.002.001,FALSE,other,chart_116002000,l10n_id_sicepat.user_type_other_current_asset,Sewa Ruko / Rumah Dibayar Dimuka,l10n_id_sicepat.chart_sicepat
 chart_117000000,117.000.000,FALSE,view,chart_110000000,l10n_id_sicepat.user_type_other_current_asset,Akun Temporer,l10n_id_sicepat.chart_sicepat
 chart_117001000,117.001.000,FALSE,other,chart_117000000,l10n_id_sicepat.user_type_other_current_asset,Transaksi Temporer,l10n_id_sicepat.chart_sicepat
-chart_117001001,117.001.001,TRUE,receivable,chart_117000000,l10n_id_sicepat.user_type_other_current_asset,Piutang NN,l10n_id_sicepat.chart_sicepat
+chart_117001001,117.002.000,TRUE,receivable,chart_117000000,l10n_id_sicepat.user_type_other_current_asset,Piutang NN,l10n_id_sicepat.chart_sicepat
 chart_120000000,120.000.000,FALSE,view,chart_100000000,l10n_id_sicepat.user_type_fixed_asset,Aset Tetap,l10n_id_sicepat.chart_sicepat
 chart_120001000,120.001.000,FALSE,other,chart_120000000,l10n_id_sicepat.user_type_fixed_asset,Peralatan Kantor,l10n_id_sicepat.chart_sicepat
 chart_120002000,120.002.000,FALSE,other,chart_120000000,l10n_id_sicepat.user_type_fixed_asset,Kendaraan,l10n_id_sicepat.chart_sicepat
